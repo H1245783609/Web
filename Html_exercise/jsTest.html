@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js测试</title>
+
+    <script type="text/javascript">
+        var msg="\n函数的递归调用：\n\n";
+         //响应按钮的点击事件
+        function Test(){
+             var result;
+             msg+="调用语句：\n";
+             msg+=" result=sum(20);\n";
+             msg+="调用步骤：\n";
+             result=sum(20);
+             msg+="计算结果：\n";
+             msg+="    result="+result+"\n";
+             alert(msg);
+        }
+         //计算当前步骤加和值
+        function sum(m)
+        {
+             if(m==0)
+             {
+                 return 0;
+             }
+             else
+             {
+                 msg+="    result="+m+"+sum("+(m-2)+ ");\n";
+                 result=m+sum(m-2);
+             }
+             return result;
+        }
+
+        function maxNum()
+        {
+            //获取两个文本框的值
+            var x = document.getElementById("num1").value;
+            var y = document.getElementById("num2").value;
+            //强制转换为数值型
+            x = parseFloat(x);
+            y = parseFloat(y);
+            if(x<y)
+            {
+                alert("最大数是："+y);
+            }
+            else
+            {
+                alert("最大数是："+x);
+            }
+        }
+
+        function strNum(){
+            var str = document.getElementById("num3").value;
+            var str1 = "";
+            for(var i = 0;i<4;i++){
+                if(i !=3)
+                    str1 += str.charAt(i) + " ";
+                else
+                    str1 +=str.charAt(i)
+            }
+            alert(str1);
+        }
+
+        window.onload = function () {
+            setTimeout("alert('Hello World!');", 2000);
+        }
+    </script>
+
+</head>
+<body>
+    <p>2秒后提示欢迎语。</p>
+
+    <input type="button" value="测试" onclick="Test()"/><br />
+
+    第一个数是：<input type="text" id="num1"/><br/>
+    第二个数是：<input type="text" id="num2"/><br/>
+    <input type="button" onclick="maxNum()" value="计算"/><br/>
+
+    <input type="text" id="num3"/>
+    <input type="button" onclick="strNum" value="Click"/>
+
+</body>
+</html>
